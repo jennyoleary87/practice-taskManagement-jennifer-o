@@ -14,8 +14,8 @@ const TaskDetail = () => {
 
     return (
         <div id="detail-page">
-            <h1>PRODUCT DETAILS</h1>
-            <h3>Displaying details for product ID: {id}</h3>
+            <h1>TASK DETAILS</h1>
+            <h3>Displaying details for task ID: {id}</h3>
             <br /> <br />
             <h2>{task.title}</h2>
             <p>{task.description}</p>
