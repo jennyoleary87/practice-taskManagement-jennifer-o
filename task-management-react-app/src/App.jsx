@@ -1,26 +1,18 @@
-import { useState, useEffect } from 'react';
 import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TaskList from './components/TaskList'
 import TaskDetail from './components/TaskDetail'
 
 function App() {
 
-
-
   return (
     <>
-      <div>
-        <TaskList />
-        <TaskDetail />
-        <BrowserRouter>
-          <Routes>
-            <>
-              <Route path="/task/${task.id}" element={<TaskDetail allTasks={mockData} />} />
-            </>
-          </Routes>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TaskList />} />
+          <Route path="/task/:id" element={<TaskDetail />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

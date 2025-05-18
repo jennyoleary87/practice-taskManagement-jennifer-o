@@ -1,20 +1,25 @@
 import { Link, useParams } from 'react-router';
-import StyledLink from './StyledLink';
-// import StyledLink from 
+import mockData from './data';
 
-const TaskDetail = ({ allTasks }) => {
+const TaskDetail = () => {
 
     const { id } = useParams();
-    const [task] = [...mockData].map(obj => obj.id == id);
+    const taskId = parseInt(id);
+    const task = mockData.find(task => task.id == taskId);
+
+    // Invalid or missing task IDs are handled gracefully with an error message
+    if (!mockData[id]) {
+        return <p>Error: Invalid ID</p>
+    }
 
     return (
-        <div>
-            <h2>{task.name}</h2>
-            <p>{`(${capitalize(task.description)})`}</p>
-            <Link to="/">Task One</Link>
-            <div style={{ margin: "0 auto" }}>
-                <StyledLink destination="/">{"Return to main page".toUpperCase()}</StyledLink>
-            </div>
+        <div id="detail-page">
+            <h1>PRODUCT DETAILS</h1>
+            <h3>Displaying details for product ID: {id}</h3>
+            <br /> <br />
+            <h2>{task.title}</h2>
+            <p>{task.description}</p>
+            <Link to="/">return to list</Link>
         </div>
     )
 }
